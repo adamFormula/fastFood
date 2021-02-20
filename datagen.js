@@ -1,5 +1,7 @@
 //run once to create dummy data of choosen size (samples)
 
+//Here is adams comment
+
 const fs = require("fs");
 const path = require("path");
 let states = ["ordered", "cooked", "served", "paid"];

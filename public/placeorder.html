@@ -1,0 +1,88 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="./assets/css/style.css">
+    <title>PLace Order</title>
+</head>
+
+<body>
+    <div class="bgImg"></div>
+    <div class="makeOrder centered">
+        <h1><img src="./assets/css/img/adamskitchen.png" id="logo">Welcome to Adam's Kitchen</h1>
+        <form method="POST" action="/PlaceOrder">
+            <table>
+                <tbody>
+                    <tr>
+                        <th scope="row"><label for='tbl'>Table Number</label></th>
+                        <td><input id='tbl' type='number' name='tableNumber'></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table id="orderTbl">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Line Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><label for="bgr">Burger &amp; chips</label></th>
+                        <td><input id="bgr" type="number" name="BurgerMeal" onchange="recalculate(this)" /></td>
+                        <td id="bgrPrice">£12</td>
+                        <td id="bgrTotal">£0</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="fsh">Fish &amp; chips</label></th>
+                        <td><input type="number" id="fsh" name="FishMeal" onchange="recalculate(this)" /></td>
+                        <td id="fshPrice">£15</td>
+                        <td id="fshTotal">£0</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="las">Lasagne</label></th>
+                        <td><input type="number" id="las" name="Lasagne" onchange="recalculate(this)" /></td>
+                        <td id="lasPrice">£12</td>
+                        <td id="lasTotal">£0</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="brs">Beers</label></th>
+                        <td><input type="number" id="brs" name="Beers" onchange="recalculate(this)" /></td>
+                        <td id="brsPrice">£2</td>
+                        <td id="brsTotal">£0</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="cks">Cokes</label></th>
+                        <td><input type="number" id="cks" name="Cokes" onchange="recalculate(this)" /></td>
+                        <td id="cksPrice">£1</td>
+                        <td id="cksTotal">£0</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <th id="totalSum" colspan="4">TOTAL:</th>
+                </tfoot>
+            </table>
+            <input type="submit" value="Place Order">
+        </form>
+    </div>
+    <script>
+        function recalculate(selectObj) {
+            console.log(selectObj.id)
+            let total = 0
+            let tds = document.querySelectorAll('[id$="Total"]');
+            let totalObj = document.getElementById('totalSum')
+            let priceObj = Number(document.getElementById(selectObj.id + 'Price').innerHTML.replace('£', ''))
+            let lineObj = document.getElementById(selectObj.id + 'Total')
+            lineObj.innerHTML = '£' + String(priceObj * Number(selectObj.value))
+            tds.forEach(lineTotal => {
+                total += Number(lineTotal.innerHTML.replace('£', ''))
+            });
+            totalObj.innerHTML = 'TOTAL: £' + String(total)
+        }
+    </script>
+</body>
+
+</html>

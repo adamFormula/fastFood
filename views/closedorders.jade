@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        link(rel="stylesheet", href="./assets/css/style.css")
+        title Orders Manager
+    body
+        div.bgImg
+        table#orders.order.centered
+            thead
+                tr
+                    th Order#
+                    th Table#
+                    th Order
+                    th
+                        select(name="filter", id="filter", onchange="filterOrders(this)")
+                            option(value="all", selected="selected") Status: ALL
+                            each status in statuses
+                                option(value="#{status}") Status: #{status}
+                    th Actions
+            tbody
+            tfoot
+                tr
+                    td(colspan="5", id="footer")
+        script(type='text/javascript', src='./assets/js/closedorders.js')

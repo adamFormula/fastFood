@@ -1,0 +1,26 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="./assets/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bgImg"></div>
+    <div class="placeOrder centered">
+        <h1>Order# 1 ORDERED</h1>
+        <img src="./assets/css/img/adamskitchen.png" id="logoCustomer">
+        <h2>There is 0 orders before yours.</h2>
+        <h2>Your order status is ordered.</h2>
+        <h2>It will autorefresh every 5 seconds.</h2>
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = '/orderStatus?ordernumber=1';
+        }, 5000);
+    </script>
+</body>
+
+</html>

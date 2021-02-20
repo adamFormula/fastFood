@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title Order Form
+        link(rel="stylesheet", href="./assets/css/style.css")
+    body
+        div.bgImg
+        div.makeOrder.centered
+            h1 
+                img#logo(src="./assets/css/img/adamskitchen.png") 
+                | Welcome to Adam's Kitchen
+            form(method="POST", action="/PlaceOrder")
+                table
+                    tbody
+                        tr
+                            th(scope="row")
+                                label(for='tbl') Table Number
+                                input(id="tbl", type="number", name="tableNumber")
+                table#orderTbl
+                    thead
+                        tr
+                            each val in tblHdr
+                                th= val
+                    tbody
+                        each food, id in foods
+                            tr
+                                th(scope="row")
+                                    label(for="#{id}") #{food.txt}
+                                td
+                                    input(id="#{id}", type="number", name="#{food.name}", onchange="recalculate(this)")
+                                td(id="#{id}Price") £#{food.price}
+                                td(id="#{id}Total") £0
+                    tfoot
+                        th#totalSum(colspan="4") TOTAL: £0
+                input(type="submit", value="Place Order")
+        script(type='text/javascript', src='./assets/js/makeorder.js')

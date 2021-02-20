@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Order# #{orderNumber} #{orderStatus.toUpperCase()}
+    link(rel="stylesheet", href="assets/css/style.css")
+  body
+    div.bgImg
+    div.placeOrder.centered
+        if orderSuccess
+            h1 Order# #{orderNumber} #{orderStatus.toUpperCase()}
+            img#logoCustomer(src="./assets/css/img/adamskitchen.png")
+            h2 There is #{(orderQueue==-1)?0:orderQueue} orders in queue before yours.
+            h2 Your order status is #{orderStatus}.
+            h2 It will autorefresh every 5 seconds.
+        else
+            h1 Order NOT Accepted!!!
+            img#logoCustomer(src="./assets/css/img/adamskitchen.png")
+            h2 This is duplicated order.
+            h2 Previous order #{order.number} has been correclty processed.
+        
+    script  setTimeout(function() {
+            |   window.location.href = "/orderstatus?ordernumber=#{orderNumber}"}, 5000);

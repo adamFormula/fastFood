@@ -205,7 +205,7 @@ table#orderTbl,
 table#orderTbl>*>*>* {
     border: solid 1px;
     border-radius: 10px;
-    background-color: aliceblue;
+    background-color:blue;
     font-size: 25px;
     box-shadow: 4px 4px 11px #1b1919cf;
     padding: 10px;
